@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7ff">
+  <meta name="description" content="A modern miniature text search engine powered by information retrieval techniques.">
+  <title>Findly — Search smarter. Find faster.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Findly home" id="brand-home">
+        <span class="brand-mark"><span></span><span></span><span></span></span>
+        <span class="brand-name">findly<span class="brand-period">.</span></span>
+      </a>
+      <div class="topbar-right">
+        <span class="topbar-caption"><span class="status-dot"></span> Your personal document search</span>
+        <button class="icon-button theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" title="Toggle theme">
+          <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path></svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 14.2A8.7 8.7 0 0 1 9.8 3.2 8.9 8.9 0 1 0 20.8 14.2Z"></path></svg>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="landing-view" id="landing-view">
+        <div class="hero-content">
+          <div class="eyebrow"><span class="eyebrow-sparkle">✳</span> A smarter way to explore your files</div>
+          <h1>Find what <span>matters.</span></h1>
+          <p class="hero-subtitle">Search smarter. Find faster.</p>
+          <p class="hero-description">A focused search space for your documents. Ask a question, explore a phrase, or find the exact detail you need.</p>
+
+          <form class="search-form hero-search" id="hero-search-form" autocomplete="off">
+            <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 5 5"></path></svg>
+            <input id="hero-query" name="query" type="search" placeholder="Try “information retrieval”" aria-label="Search your documents" required>
+            <button class="search-submit" type="submit"><span>Search</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></button>
+          </form>
+
+          <div class="search-tools-bar" aria-label="Search tools">
+            <span class="tools-caption">SEARCH WITH</span>
+            <div class="tool-chip-group" role="group" aria-label="Choose search features">
+              <button class="tool-chip" type="button" data-feature="boolean" aria-pressed="false"><span class="tool-chip-symbol">∧</span> Boolean</button>
+              <button class="tool-chip" type="button" data-feature="wildcard" aria-pressed="false"><span class="tool-chip-symbol">＊</span> Wildcard</button>
+              <button class="tool-chip" type="button" data-feature="soundex" aria-pressed="false"><span class="tool-chip-symbol">♫</span> Soundex</button>
+              <button class="tool-chip active" type="button" data-feature="spellcorrect" aria-pressed="true"><span class="tool-chip-symbol">✓</span> Spell correct</button>
+            </div>
+            <span class="tools-hint" id="hero-tools-hint">TF-IDF ranking · spelling help on</span>
+          </div>
+
+          <div class="suggestions-block">
+            <span class="suggestions-label">Try a search</span>
+            <div class="suggestion-list">
+              <button type="button" class="suggestion-chip" data-query='"inverted index"'>“inverted index”</button>
+              <button type="button" class="suggestion-chip" data-query="TF-IDF ranking">TF-IDF ranking</button>
+              <button type="button" class="suggestion-chip" data-query="wildcard*">wildcard*</button>
+              <button type="button" class="suggestion-chip" data-query="Boolean AND search">Boolean AND search</button>
+              <button type="button" class="suggestion-chip" data-query="inverted indx">inverted indx</button>
+            </div>
+          </div>
+
+          <div class="hero-actions">
+            <button class="upload-button" id="upload-trigger" type="button">
+              <span class="upload-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m-4 4 4-4 4 4M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"></path></svg></span>
+              <span><strong>Upload your corpus</strong><small>Add TXT files to your search index</small></span>
+              <svg class="upload-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg>
+            </button>
+            <input id="file-input" type="file" accept=".txt,text/plain" multiple hidden>
+            <div class="upload-note">TXT files only <span>·</span> Up to 16 MB per upload</div>
+          </div>
+        </div>
+
+        <div class="stats-strip" aria-live="polite">
+          <div class="stat-item"><span class="stat-icon stat-icon-blue">▤</span><div><strong id="stat-documents">—</strong><small>Documents indexed</small></div></div>
+          <div class="stat-divider"></div>
+          <div class="stat-item"><span class="stat-icon stat-icon-purple">⌘</span><div><strong id="stat-terms">—</strong><small>Unique terms</small></div></div>
+          <div class="stat-divider"></div>
+          <div class="stat-item"><span class="stat-icon stat-icon-green">↗</span><div><strong id="stat-tokens">—</strong><small>Tokens processed</small></div></div>
+          <div class="stats-footnote"><span class="status-dot"></span> Index ready</div>
+        </div>
+      </section>
+
+      <section class="results-view hidden" id="results-view">
+        <div class="results-search-row">
+          <form class="search-form compact-search" id="results-search-form" autocomplete="off">
+            <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 5 5"></path></svg>
+            <input id="results-query" name="query" type="search" placeholder="Search your documents" aria-label="Search your documents" required>
+            <button class="clear-input" id="clear-query" type="button" aria-label="Clear search" title="Clear search">×</button>
+            <button class="search-submit" type="submit"><span>Search</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></button>
+          </form>
+          <button class="text-button upload-inline" id="upload-trigger-results" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m-4 4 4-4 4 4M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"></path></svg> Upload</button>
+        </div>
+
+        <div class="search-tools-bar results-tools-bar" aria-label="Search tools">
+          <span class="tools-caption">SEARCH WITH</span>
+          <div class="tool-chip-group" role="group" aria-label="Choose search features">
+            <button class="tool-chip" type="button" data-feature="boolean" aria-pressed="false"><span class="tool-chip-symbol">∧</span> Boolean</button>
+            <button class="tool-chip" type="button" data-feature="wildcard" aria-pressed="false"><span class="tool-chip-symbol">＊</span> Wildcard</button>
+            <button class="tool-chip" type="button" data-feature="soundex" aria-pressed="false"><span class="tool-chip-symbol">♫</span> Soundex</button>
+            <button class="tool-chip active" type="button" data-feature="spellcorrect" aria-pressed="true"><span class="tool-chip-symbol">✓</span> Spell correct</button>
+          </div>
+          <span class="tools-hint" id="results-tools-hint">TF-IDF ranking · spelling help on</span>
+        </div>
+
+        <div class="results-layout">
+          <aside class="sidebar">
+            <div class="sidebar-heading"><span>SEARCH TOOLS</span><button id="back-home" class="back-home" type="button" title="Back to home">⌂</button></div>
+            <div class="side-section">
+              <h3>Search mode</h3>
+              <div class="mode-options" role="group" aria-label="Search mode">
+                <button type="button" class="mode-option active" data-mode="ranked"><span class="mode-option-icon">✧</span> Ranked</button>
+                <button type="button" class="mode-option" data-mode="boolean"><span class="mode-option-icon">∧</span> Boolean</button>
+                <button type="button" class="mode-option" data-mode="wildcard"><span class="mode-option-icon">＊</span> Wildcard</button>
+              </div>
+              <p class="side-help" id="mode-description">Sort documents by TF-IDF relevance.</p>
+            </div>
+            <div class="side-divider"></div>
+            <div class="side-section">
+              <h3>Refine search</h3>
+              <label class="check-row"><input type="checkbox" id="results-phonetic"><span class="custom-check"></span><span><strong>Soundex matching</strong><small>Find similar-sounding terms</small></span></label>
+              <label class="check-row"><input type="checkbox" id="results-spellcorrect" checked><span class="custom-check"></span><span><strong>Spell correction</strong><small>Suggest and retry likely corrections</small></span></label>
+              <div class="filter-note"><span class="filter-note-icon">ⓘ</span><span>Wildcard examples: <code>retriev*</code> or <code>ca?</code>. Boolean supports AND, OR, NOT and parentheses.</span></div>
+            </div>
+            <div class="side-divider"></div>
+            <div class="side-section history-section">
+              <div class="history-heading"><h3>Recent searches</h3><button type="button" id="clear-history" class="clear-history">Clear</button></div>
+              <div id="search-history" class="history-list"><p class="history-empty">Your searches will appear here.</p></div>
+            </div>
+            <div class="sidebar-bottom"><span class="sidebar-logo-mark">f.</span><span>Findly Search</span><span class="sidebar-version">WSM PROJECT</span></div>
+          </aside>
+
+          <section class="results-main" aria-live="polite">
+            <div class="results-summary" id="results-summary">
+              <div><div class="results-kicker">SEARCH RESULTS</div><h2 id="results-heading">Search your documents</h2><p id="results-meta">Your indexed content, all in one place.</p></div>
+              <div class="results-sort-label" id="sort-label">Relevance <span>↓</span></div>
+            </div>
+            <div class="correction-banner hidden" id="correction-banner"></div>
+            <div id="results-container" class="results-container">
+              <div class="welcome-results"><div class="welcome-orbit">✳</div><h3>Ready when you are.</h3><p>Enter a query to explore your indexed documents.</p></div>
+            </div>
+            <div class="results-footer hidden" id="results-footer"><span id="footer-count"></span><button type="button" class="text-button" id="new-search">Start a new search <span>↗</span></button></div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer class="page-footer"><span>Made for curious minds.</span><span>Powered by TF-IDF <i>·</i> Positional indexing <i>·</i> Flask</span></footer>
+  </div>
+
+  <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
+  <div class="upload-overlay hidden" id="upload-overlay" aria-live="polite"><div class="upload-dialog"><div class="spinner"></div><strong>Indexing your documents</strong><span>Building the inverted index and search vocabulary…</span></div></div>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

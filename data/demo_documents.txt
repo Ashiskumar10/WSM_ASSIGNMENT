@@ -1,0 +1,47 @@
+# Artificial Intelligence
+Artificial intelligence systems solve tasks that normally require human reasoning, such as planning, language understanding, pattern recognition, and decision making. Search engines use ranking algorithms to estimate which documents are most useful for a query.
+
+# Machine Learning
+Machine learning trains a model from examples instead of relying only on manually written rules. Supervised learning uses labeled data, while unsupervised learning discovers groups and patterns in unlabeled data.
+
+# Operating Systems
+An operating system manages processes, memory, files, input and output devices, and system resources. CPU scheduling algorithms such as FCFS, SJF, and Round Robin decide which ready process receives processor time.
+
+# Database Management Systems
+A database management system stores structured information and provides controlled access through queries. Relational databases organize records into tables, while SQL supports selection, joins, grouping, insertion, deletion, and updates.
+
+# Computer Networks
+Computer networks allow devices to exchange data through wired or wireless links. The TCP protocol provides reliable ordered delivery, while UDP offers lightweight datagram communication without connection establishment.
+
+# Data Structures
+A data structure organizes data so that operations can be performed efficiently. Arrays provide indexed access, linked lists support flexible insertion, stacks follow last in first out order, and queues follow first in first out order.
+
+# Graph Algorithms
+A graph consists of vertices connected by edges. Breadth first search explores neighbors level by level, depth first search follows paths deeply, and Dijkstra algorithm finds shortest paths when edge weights are non-negative.
+
+# Cybersecurity
+Cybersecurity protects computers, networks, and information from unauthorized access or damage. Encryption transforms readable plaintext into ciphertext, and authentication verifies the identity of a user or service.
+
+# Compiler Design
+A compiler translates source code into a target representation. Lexical analysis creates tokens, syntax analysis checks grammar, semantic analysis checks meaning, and code generation produces machine-oriented instructions.
+
+# Cloud Computing
+Cloud computing provides computing resources such as storage, virtual machines, databases, and software over a network. Elastic scaling allows an application to increase or decrease resources as demand changes.
+
+# Distributed Systems
+A distributed system consists of multiple computers that communicate over a network and coordinate to provide a service. Replication improves availability, while consensus protocols help nodes agree on shared state.
+
+# Python Programming
+Python is a general-purpose programming language used for automation, data analysis, web development, and machine learning. Functions, classes, modules, lists, dictionaries, and exceptions are common building blocks in Python programs.
+
+# Search Evaluation
+Information retrieval systems can be evaluated with precision, recall, and F-measure. Precision measures the fraction of retrieved documents that are relevant, while recall measures the fraction of all relevant documents that were retrieved.
+
+# Phonetic Matching Demo
+Rupert is a common example for phonetic matching. Search for Robert with Soundex enabled to also retrieve this document because Robert and Rupert share a Soundex code.
+
+# Wildcard Matching Demo
+A prefix wildcard such as comput* can match computer, computing, computation, and computational. A single-character wildcard such as netw?rk can match network when the pattern has the same number of characters.
+
+# Spell Correction Demo
+A spelling corrector compares an unfamiliar query against indexed vocabulary and suggests likely alternatives. Edit distance measures how many insertions, deletions, or substitutions are needed to transform one word into another.

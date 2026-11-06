@@ -1,0 +1,23 @@
+# Information Retrieval
+Information retrieval is the process of finding useful information from a large collection of documents. A search engine represents documents with terms, builds an index, and retrieves relevant content in response to a user's query.
+
+# Inverted Index
+An inverted index maps each term to the documents in which it appears. Positional information records where each term occurs, which makes exact phrase searching possible. Search systems commonly remove frequent stop words from the main retrieval index.
+
+# Tokenization and Normalization
+Tokenization splits text into individual tokens using word boundaries and regular expressions. Case folding converts words to a consistent lowercase form. Stemming reduces related word forms such as searching, searches, and searched to a shared root-like representation.
+
+# Boolean Retrieval
+Boolean retrieval combines terms with AND, OR, and NOT operators. Parentheses control the order in which expressions are evaluated. A phrase query uses quotation marks to find words that occur next to one another in the same order.
+
+# Ranked Retrieval and TF-IDF
+TF-IDF combines term frequency and inverse document frequency to estimate how important a word is to a document. Cosine similarity compares a query vector with document vectors and ranks the most relevant documents first.
+
+# Wildcard and K-Gram Search
+Wildcard queries use the asterisk to represent zero or more characters and the question mark to represent one character. A k-gram index stores short character sequences and narrows the vocabulary candidates before pattern matching.
+
+# Spelling and Phonetic Search
+A spell corrector can compare an unknown word with vocabulary entries using edit distance. Soundex maps similar-sounding English words to a phonetic code, which can help retrieve a name even when its spelling is uncertain.
+
+# Web Search Mining
+Web Search Mining studies how search systems collect, organize, index, rank, and present information from web content. A useful search interface gives users clear results, snippets, ranking signals, and simple ways to refine a query.
